@@ -1,4 +1,112 @@
 {% extends 'base.html' %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}shinetime/gallery.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}shinetime/js/cufon-yui.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}shinetime/fonts/aura_400.font.js"></script>
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+   
+	 /*Your ShineTime Welcome Image*/
+	 var default_image = '{{ MEDIA_URL }}large/default.jpg';
+	 var default_caption = 'Welcome to ShineTime';
+	 
+	 /*Load The Default Image*/
+	 loadPhoto(default_image, default_caption);
+	 
+	 
+	 function loadPhoto($url, $caption)
+	 {
+	 
+	 
+	    /*Image pre-loader*/
+	    showPreloader();
+	    var img = new Image();
+	    jQuery(img).load( function() 
+		{
+			jQuery(img).hide();
+			hidePreloader();
+		
+        }).attr({ "src": $url });
+	
+	    $('#largephoto').css('background-image','url("' + $url + '")');
+		$('#largephoto').data('caption', $caption);
+	 }
+
+	 
+	 /* When a thumbnail is clicked*/
+	 $('.thumb_container').click(function()
+	 {
+	     
+		  var handler = $(this).find('.large_image');
+		  var newsrc  = handler.attr('src');
+		  var newcaption  = handler.attr('rel');
+		  loadPhoto(newsrc, newcaption);
+	 
+	 });
+	 
+	 /*When the main photo is hovered over*/
+	 $('#largephoto').hover(function()
+	 {
+	    
+		var currentCaption  = ($(this).data('caption'));
+		var largeCaption = $(this).find('#largecaption');
+		
+		largeCaption.stop();
+		largeCaption.css('opacity','0.9');
+		largeCaption.find('.captionContent').html(currentCaption);
+		largeCaption.fadeIn()
+	
+	
+		
+		 largeCaption.find('.captionShine').stop();
+         largeCaption.find('.captionShine').css("background-position","-550px 0"); 
+         largeCaption.find('.captionShine').animate({backgroundPosition: '550px 0'},700);
+		 
+		 Cufon.replace('.captionContent');
+		
+
+	 },
+	 
+	 function()
+	 {
+	    var largeCaption = $(this).find('#largecaption');
+		largeCaption.find('.captionContent').html('');
+		largeCaption.fadeOut();
+	 
+	 });
+	
+	 
+	 
+     /* When a thumbnail is hovered over*/
+	 $('.thumb_container').hover(function()
+	 {  
+         $(this).find(".large_thumb").stop().animate({marginLeft:-7, marginTop:-7},200);
+		 $(this).find(".large_thumb_shine").stop();
+         $(this).find(".large_thumb_shine").css("background-position","-99px 0"); 
+         $(this).find(".large_thumb_shine").animate({backgroundPosition: '99px 0'},700);
+			 
+	 }, function()
+	 {
+	    $(this).find(".large_thumb").stop().animate({marginLeft:0, marginTop:0},200);
+	 });
+	 
+	 function showPreloader()
+	 {
+	   $('#loader').css('background-image','url("images/interface/loader.gif")');
+	 }
+	 
+	 function hidePreloader()
+	 {
+	   $('#loader').css('background-image','url("")');
+	 }
+   
+  });
+</script>
+{% endblock %}
 {% block contenido %}
 				<div id="banner">
 					<div class="5grid 5grid-alt">
@@ -11,8 +119,228 @@
 						</div>
 						<div class="6u">
 							
-							<!-- Banner Image -->
-								<a href="#" class="bordered-feature-image"><img src="{{ STATIC_URL }}home/images/banner.jpg" alt="" /></a>
+							<div id="container">
+<div id="containertitle">
+Último trabajo fotográfico
+</div>
+   <div class="mainframe">
+      <div id="largephoto">
+	  <div id="loader"></div>
+	  
+	  
+	    <div id="largecaption">
+		 <div class="captionShine"></div>
+		   <div class="captionContent"></div>
+		  
+		</div>
+		
+       <div id="largetrans">  
+      </div>
+	        
+      </div>
+      
+   </div>
+   <div class="thumbnails">
+   <br><br>
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample1.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample1.jpg" class="large_image" rel="Just because I can't code, doesn't mean I can't kick your ass!" />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->          
+       
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample2.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample2.jpg" class="large_image" rel="Kick-Ass Is In Theatres Everywhere Now" />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->          
+       
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample3.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample3.jpg" class="large_image" rel="I can't see through walls, but I can still kick your ass." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->           
+       
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample4.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample4.jpg" class="large_image" rel="I won't bite, I promise!" />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->           
+       
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample5.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample5.jpg" class="large_image" rel="Using swords to open up that ketchup bottle may not have been the best idea.." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->          
+       
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample6.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample6.jpg" class="large_image" rel="We're going to..wait for it..kick your ass!" />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->     
+
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample7.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample7.jpg" class="large_image" rel="I can't be invisible, but I can kick your ass." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->    
+
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample8.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample8.jpg" class="large_image" rel="Dave Lizewski is a man in a green costume. He is Kick-Ass." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->  
+
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample9.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample9.jpg" class="large_image" rel="I probably shouldn't have yelled 'surprise' wearing this costume.." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->    	   
+	   
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample10.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample10.jpg" class="large_image" rel="I can't read your mind, but I can kick your ass." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->    	
+
+   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample11.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample11.jpg" class="large_image" rel="I love that indented text effect up there. Not bad.." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->    	   
+	   	   
+	   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample12.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample12.jpg" class="large_image" rel="I got your a present. It's an Ass-Kicking." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->    	   
+	      
+	   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample13.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample13.jpg" class="large_image" rel="You don't have to be super to be a hero." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->  
+	   
+	   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample15.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample15.jpg" class="large_image" rel="We Can Kick Ass - Anytime, Anyday." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->  
+
+	   <!-- start entry-->
+                    <div class="thumbnailimage">
+                        <div class="thumb_container"> 
+                            <div class="large_thumb"> 
+                        		<img src="{{ MEDIA_URL }}thumbnails/sample14.jpg" class="large_thumb_image" alt="thumb" /> 
+                                <img src="{{ MEDIA_URL }}large/sample14.jpg" class="large_image" rel="You know..I had this look first. Batman copied ME." />
+                                <div class="large_thumb_border"></div>
+                                <div class="large_thumb_shine"></div>
+                              </div>
+						</div>
+                       </div>
+       <!--end entry-->    	 
+	   	   
+	   
+	      
+   </div>
+</div>
 						
 						</div>
 						<div class="5grid-clear"></div>

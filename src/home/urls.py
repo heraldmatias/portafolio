@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^biografia/$', BiographyView.as_view(), name='portafolio-biografia'),
     url(r'^actualidad/$', PresentView.as_view(), name='portafolio-actualidad'),
     url(r'^contacto/$', ContactView.as_view(), name='portafolio-contacto'),
+    url(r'^portafolio/(?P<codigo>\w+)/$', PortfolioView.as_view(), name='portafolio-albumes'),
 )

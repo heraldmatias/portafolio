@@ -23,3 +23,5 @@ urlpatterns += patterns('',
     url(r'^static/(?P<path>.*)$',
         serve, {'document_root': settings.STATIC_ROOT}),    
 )
+
+handler500 = 'home.views.internal_error_view'

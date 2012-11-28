@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django.views.generic import TemplateView, ListView
-
+from django.contrib.auth.models import User
 class IndexView(TemplateView):
     template_name = "index.html"
 
@@ -22,6 +22,9 @@ class ContactView(TemplateView):
 
 class PortfolioView(TemplateView):
     template_name = "portafolio.html"
-
+    
 class PresentView(TemplateView):
     template_name = "actualidad.html"
+
+class InternalErrorView(TemplateView):
+    template_name = "500.html"
