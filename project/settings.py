@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Django settings for project project.
+
 from os.path import dirname, join, realpath, split
 
 SYSTEM_PATH, PROJECT_DIR = split(realpath(dirname(__file__)))
@@ -13,11 +13,11 @@ FCGI_OPTIONS = {
 }
 
 MANAGERS = ADMINS
-DEBUG=False
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'portafolioxxx',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -123,7 +123,7 @@ INSTALLED_APPS = (
     'filebrowser',
     'django.contrib.admin',    
     #my apps
-    'home',
+    'website',
     'django_thumbs',
 )
 
