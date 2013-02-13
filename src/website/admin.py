@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from models import Pagina
+from django.contrib.flatpages.admin import FlatPageAdmin
+from django.contrib.flatpages.models import FlatPage
+
+from .models import Pagina
+
 
 class PaginaAdmin(admin.ModelAdmin):
     list_display = ('titulo','tipo','creador',)
@@ -16,4 +20,12 @@ class PaginaAdmin(admin.ModelAdmin):
         	#"grappelli/tinymce_setup/tinymce_setup.js")
         	"js/jscontenido.js")
 
+
+class PortafolioFlatPageAdmin(FlatPageAdmin):
+
+    class Media:        
+        js = ("js/advanced.js", "js/wysihtml5-0.3.0.min.js", "js/textinit.js")
+
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, PortafolioFlatPageAdmin)
 admin.site.register(Pagina,PaginaAdmin)

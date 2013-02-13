@@ -115,6 +115,12 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    #apps
+    'south',
+    'grappelli',
+    'filebrowser',
+    'easy_thumbnails',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -122,11 +128,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    #apps
-    'south',
-    'grappelli',
-    'filebrowser',
-    'easy_thumbnails',
+    'django.contrib.flatpages',
     #my apps
     'website',
     'album',

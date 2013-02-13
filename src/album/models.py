@@ -26,7 +26,7 @@ class Album(models.Model):
 
     def get_cover_photo(self):
         photo = self.photo_set.get(is_cover=True)
-        return photo.photo
+        return photo
 
 
 class Photo(models.Model):
