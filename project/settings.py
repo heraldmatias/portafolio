@@ -26,6 +26,7 @@ DATABASES = {
 }
 
 INTERNAL_IPS = ('127.0.0.1',)
+
 DEFAULT_FROM_EMAIL = 'prensa@presidencia.gob.pe'
 
 # Local time zone for this installation. Choices can be found here:
@@ -100,11 +101,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-	#'pybb.middleware.PybbMiddleware',
 )
 
 ROOT_URLCONF = 'project.urls'
+
 #WSGI_APPLICATION = 'portafolio.wsgi.application'
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -119,28 +121,17 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
+    #apps
+    'south',
     'grappelli',
     'filebrowser',
-    'django.contrib.admin',    
+    'easy_thumbnails',
     #my apps
     'website',
-    'django_thumbs',
+    'album',
 )
 
-GRAPPELLI_ADMIN_TITLE = 'Sitio Administrativo'
-
-LOGIN_URL = '/'
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.request",
-    "django.core.context_processors.static",
-    "django.core.context_processors.csrf",
-	"django.contrib.messages.context_processors.messages",
-)
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error.
@@ -170,3 +161,25 @@ LOGGING = {
     }
 }
 
+GRAPPELLI_ADMIN_TITLE = 'Sitio Administrativo'
+
+LOGIN_URL = '/'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    "django.core.context_processors.static",
+    "django.core.context_processors.csrf",
+    "django.contrib.messages.context_processors.messages",
+)
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'cover': {'size': (262, 110), 'crop': True},
+        'thumb': {'size': (54, 54), 'crop': True},
+        'photo': {'size': (445, 380)},
+    },
+}
