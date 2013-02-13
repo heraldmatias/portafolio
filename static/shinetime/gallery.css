@@ -1,5 +1,5 @@
 #container { width:793px; height:498px; margin:0 auto; margin-top: -20px;
-	background: url("../home/css/images/bg01.jpg") repeat scroll 0% 0% rgb(59, 67, 70);
+	background: url("../css/images/bg01.jpg") repeat scroll 0% 0% rgb(59, 67, 70);
 	border-radius: 10px 10px 10px 10px; background-color:#111; }
 #container .mainframe { width: 500px; height:498px; float:left}
 #container .thumbnails { float:left; width:293px; height:498px; background-repeat:no-repeat; 

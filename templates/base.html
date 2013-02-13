@@ -1,97 +1,89 @@
 <!DOCTYPE HTML>
-<!--
-	Jesús Lara Fotografía, tomo fotos hasta calatos. ;)
--->
-{% load url from future %}
 <html>
-	<head>
-		<title>Jesús Lara Fotografía</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<!--5grid--><script src="{{ STATIC_URL }}home/css/5grid/viewport.js"></script><!--[if lt IE 9]><script src="{{ STATIC_URL }}home/css/5grid/ie.js"></script><![endif]--><link rel="stylesheet" href="{{ STATIC_URL }}home/css/5grid/responsive.css" /><!--/5grid-->
-		<link rel="stylesheet" href="{{ STATIC_URL }}home/css/style.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="{{ STATIC_URL }}home/css/style-ie9.css" /><![endif]-->
-		{% block css %}
-		{% endblock %}
-		{% block js %}
-		{% endblock %}
-	</head>
-	<body>
-
-		<!-- Header -->
-			<div id="header-wrapper">
-				<header id="header" class="5grid">
-					<div class="12u-first">
-					
-						<!-- Logo -->
-							<h1><a href="#">Jesús Lara</a></h1>
-						
-						<!-- Nav -->
-							<nav>
-								<a href="{% url 'portafolio-index' %}">Inicio</a>
-								<a href="{% url 'portafolio-albumes' %}">Portafolio</a>
-								<a href="{% url 'portafolio-biografia' %}">Biografía</a>
-								<a href="{% url 'portafolio-actualidad' %}">Actualidad</a>
-								<a href="{% url 'portafolio-contacto' %}">Contacto</a>
-							</nav>
-
-					</div>
-				</header>
-				{% block contenido %}
-				{% endblock %}
-				<!-- Footer -->
-			<div id="footer-wrapper">
-				<footer id="footer" class="5grid">
-					<div class="8u-first">
-					
-						<!-- Links -->
-							<section>
-								<h2>Enlaces de interes pe tío</h2>
-								<div class="3u-first">
-									<ul class="link-list last-child">
-										<li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
-										<li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
-									</ul>
-								</div>
-								<div class="3u">
-									<ul class="link-list last-child">
-										<li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
-										<li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
-									</ul>
-								</div>
-								<div class="3u">
-									<ul class="link-list last-child">
-										<li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
-										<li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
-									</ul>
-								</div>
-								<div class="3u">
-									<ul class="link-list last-child">
-										<li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
-										<li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>		
-									</ul>
-								</div>
-							</section>
-
-					</div>
-					<div class="4u">
-						
-						<!-- Blurb -->
-							<section>
-								<h2>Mis frases pe tío</h2>
-								<p>									
-									Otra vez don Ándres??.<br>
-									Trabaja en presidencia peru decian, trabajaras 48 horas semanales y tendras aumento decían.									
-								</p>
-							</section>
-					
-					</div>
-				</footer>
-			</div>
-		<!-- Copyright -->
-			<div id="copyright">
-				(c) 2012 Jesús Lara. Todos los derechos reservados. Diseñado por <a href="https://www.facebook.com/andresherrada/" target="_blank">Don Ándres Donuts</a> + <a href="http://www.freecsstemplates.org/">FCT</a>. Imageness <a href="javascript:">Jesús Lara</a>.
-			</div>
-	</body>
+  <head>
+    <title>Jesús Lara Fotografía</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="developer" content="Micky Miseck" />
+    <!--5grid-->
+    <script src="{{ STATIC_URL }}css/5grid/viewport.js"></script>
+    <!--[if lt IE 9]><script src="{{ STATIC_URL }}css/5grid/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/5grid/responsive.css" /><!--/5grid-->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="{{ STATIC_URL }}css/style-ie9.css" /><![endif]-->
+    {% block css %}
+    {% endblock %}
+    {% block js %}
+    {% endblock %}
+  </head>
+  <body>
+    <!-- Header -->
+    <div id="header-wrapper">
+      <header id="header" class="5grid">
+        <div class="12u-first">
+          <!-- Logo -->
+          <h1><a href="#">Jesús Lara</a></h1>
+          <!-- Nav -->
+          <nav>
+            <a href="{% url portafolio_index %}">Inicio</a>
+            <a href="{% url portafolio_albumes %}">Portafolio</a>
+            <a href="{% url portafolio_biografia %}">Biografía</a>
+            <a href="{% url portafolio_actualidad %}">Actualidad</a>
+            <a href="{% url portafolio_contacto %}">Contacto</a>
+          </nav>
+        </div>
+      </header>
+      {% block contenido %}
+      {% endblock %}
+      <!-- Footer -->
+      <div id="footer-wrapper">
+      	<footer id="footer" class="5grid">
+          <div class="8u-first">
+          <!-- Links -->
+          <section>
+            <h2>Enlaces de interes pe tío</h2>
+            <div class="3u-first">
+            <ul class="link-list last-child">
+              <li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
+              <li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
+            </ul>
+            </div>
+          	<div class="3u">
+            <ul class="link-list last-child">
+              <li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
+              <li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
+            </ul>
+          	</div>
+          	<div class="3u">
+            <ul class="link-list last-child">
+              <li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
+              <li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
+            </ul>
+          	</div>
+          	<div class="3u">
+            <ul class="link-list last-child">
+              <li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>
+              <li><a href="http://www.dunkindonutsperu.com/">Dunkin Donuts</a></li>		
+            </ul>
+          	</div>
+          </section>
+          </div>
+          <div class="4u">
+          <!-- Blurb -->
+          <section>
+          	<h2>Mis frases pe tío</h2>
+          	<p>
+              Otra vez don Ándres??.<br>
+              Trabaja en presidencia peru decian, trabajaras 48 horas semanales y tendras aumento decían.									
+          	</p>
+          </section>
+          </div>
+      	</footer>
+      </div>
+   <!-- Copyright -->
+  <div id="copyright">
+  (c) 2012 Jesús Lara. Todos los derechos reservados. Diseñado por <a href="https://www.facebook.com/andresherrada/" target="_blank">Don Ándres Donuts</a> + <a href="http://www.freecsstemplates.org/">FCT</a>. Imageness <a href="javascript:">Jesús Lara</a>.
+  </div>
+  </body>
 </html>
