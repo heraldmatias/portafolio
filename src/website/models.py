@@ -3,7 +3,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from utils.clases import Enumeration
+from utils.classes import Enumeration
 
 
 class Pagina(models.Model):
@@ -30,4 +30,7 @@ class Pagina(models.Model):
     	verbose_name_plural = 'Paginas'
 
     def __unicode__(self):
+        return self.titulo
+
+    def type(self):
         return self.TIPOS.get_string(self.tipo)

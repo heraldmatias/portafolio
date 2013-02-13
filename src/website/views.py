@@ -2,14 +2,18 @@
 
 from django.views.generic import TemplateView, ListView
 
-from models import Pagina
+from album.models import Album
+from .models import Pagina
 
-class IndexView(TemplateView):
-    template_name = "index.html"
 
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)        
-        return context
+class IndexView(ListView):
+
+    template_name = "website/index.html"
+    model = Album
+
+    def get_queryset(self):
+        albums = Album.objects.all()[:5]
+        return albums
 
 
 class BiographyView(TemplateView):

@@ -3,8 +3,8 @@ from django.contrib import admin
 from models import Pagina
 
 class PaginaAdmin(admin.ModelAdmin):
-    list_display = ('codigo','titulo','tipo','creador',)
-    list_display_links = ('codigo','titulo',)
+    list_display = ('titulo','tipo','creador',)
+    list_display_links = ('titulo',)
     exclude = ['creador']
 
     def save_model(self, request, obj, form, change):
