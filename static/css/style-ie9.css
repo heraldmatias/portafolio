@@ -1,7 +1,7 @@
 /*
-	Halcyonic 1.0 by nodethirtythree design
-	http://nodethirtythree.com | @nodethirtythree
-	Released under the Creative Commons Attribution 3.0 license (nodethirtythree.com/license)
+	Halcyonic 2.5 by HTML5 Up!
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 .button-big {
@@ -10,4 +10,8 @@
 
 .button-big:hover {
 	background-image: url('images/button-big-hover.svg');
+}
+
+.button-big:active {
+	background-image: url('images/button-big-active.svg');
 }
