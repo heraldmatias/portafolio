@@ -11,7 +11,8 @@ urlpatterns = patterns('',
     (r'^grappelli/', include('grappelli.urls')),
     (r'^admin/', include(admin.site.urls)),
     #PUBLICO
-    (r'^', include('website.urls')),
+    (r'', include('album.urls')),
+    (r'', include('website.urls')),
 )
 
 handler500 = 'home.views.internal_error_view'

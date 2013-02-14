@@ -22,7 +22,7 @@ class ContactView(TemplateView):
 
 class PortfolioView(TemplateView):
     template_name = "portafolio.html"
- 
+
 
 class PresentView(TemplateView):
     template_name = "actualidad.html"
