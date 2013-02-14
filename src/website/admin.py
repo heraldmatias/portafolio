@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
@@ -16,15 +17,13 @@ class PaginaAdmin(admin.ModelAdmin):
         obj.save()
 
     class Media:        
-        js = ("tinymce/jscripts/tiny_mce/tiny_mce.js",
-        	#"grappelli/tinymce_setup/tinymce_setup.js")
-        	"js/jscontenido.js")
+        js = ("tinymce/jscripts/tiny_mce/tiny_mce.js", "js/jscontenido.js")
 
 
 class PortafolioFlatPageAdmin(FlatPageAdmin):
 
-    class Media:        
-        js = ("js/advanced.js", "js/wysihtml5-0.3.0.min.js", "js/textinit.js")
+    class Media:
+        js = ("tinymce/jscripts/tiny_mce/tiny_mce.js", "js/jscontenido.js")
 
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, PortafolioFlatPageAdmin)
