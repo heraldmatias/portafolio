@@ -1,218 +1,82 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
-{% block css %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}shinetime/gallery.css">
-{% endblock %}
-{% block js %}
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}shinetime/js/cufon-yui.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}shinetime/fonts/aura_400.font.js"></script>
-<script type="text/javascript">
-  $(document).ready(function()
-  {
-	 /*Your ShineTime Welcome Image*/
-   {% with cover_photo=object_list.0.get_cover_photo %}
-	 var default_image = '{{ cover_photo.photo|thumbnail_url:'cover' }}';
-	 var default_caption = '{{ cover_photo.title }}';
-   {% endwith %}
-
-	 /*Load The Default Image*/
-	 loadPhoto(default_image, default_caption);
-	 function loadPhoto($url, $caption)
-	 {
-	    /*Image pre-loader*/
-	    showPreloader();
-	    var img = new Image();
-	    jQuery(img).load( function() 
-		{
-			jQuery(img).hide();
-			hidePreloader();
-        }).attr({ "src": $url });
-	    $('#largephoto').css('background-image','url("' + $url + '")');
-		$('#largephoto').data('caption', $caption);
-	 }
-
-	 /* When a thumbnail is clicked*/
-	 $('.thumb_container').click(function()
-	 {
-      var handler = $(this).find('.large_image');
-      var newsrc  = handler.attr('src');
-      var newcaption  = handler.attr('rel');
-      loadPhoto(newsrc, newcaption);
-	 });
-	 
-	 /*When the main photo is hovered over*/
-	 $('#largephoto').hover(function()
-	 {
-		var currentCaption  = ($(this).data('caption'));
-		var largeCaption = $(this).find('#largecaption');
-		largeCaption.stop();
-		largeCaption.css('opacity','0.9');
-		largeCaption.find('.captionContent').html(currentCaption);
-		largeCaption.fadeIn()
-        largeCaption.find('.captionShine').stop();
-        largeCaption.find('.captionShine').css("background-position","-550px 0"); 
-        largeCaption.find('.captionShine').animate({backgroundPosition: '550px 0'},700);
-        Cufon.replace('.captionContent');
-	 },
-	 function()
-	 {
-	    var largeCaption = $(this).find('#largecaption');
-		largeCaption.find('.captionContent').html('');
-		largeCaption.fadeOut();
-	 
-	 });
-     /* When a thumbnail is hovered over*/
-	 $('.thumb_container').hover(function()
-	 {  
-         $(this).find(".large_thumb").stop().animate({marginLeft:-7, marginTop:-7},200);
-		 $(this).find(".large_thumb_shine").stop();
-         $(this).find(".large_thumb_shine").css("background-position","-99px 0"); 
-         $(this).find(".large_thumb_shine").animate({backgroundPosition: '99px 0'},700);
-			 
-	 }, function()
-	 {
-	    $(this).find(".large_thumb").stop().animate({marginLeft:0, marginTop:0},200);
-	 });
-	 function showPreloader()
-	 {
-	   $('#loader').css('background-image','url("{{ STATIC_URL }}shinetime/images/interface/loader.gif")');
-	 }
-	 function hidePreloader()
-	 {
-	   $('#loader').css('background-image','url("")');
-	 }
-  });
-</script>
-{% endblock %}
-{% block contenido %}
-    <div id="banner">
-    <div class="5grid 5grid-alt">
-      <div class="6u-first">
-      <!-- Banner Copy -->
-      <p>Luego del almuercito el viejo truco del botón y la correa. ...</p>
-      <a href="#" class="button-big">Conoceme ;)</a>
-      </div>
-      <div class="6u">
-      {% with last_album=object_list.0 %}
-        <div id="container">
-          <div id="containertitle">
-          Último trabajo fotográfico{% if last_album.name %}: {{ last_album.name|title }}{% endif %}
-          </div>
-          <div class="mainframe">
-          <div id="largephoto">
-            <div id="loader"></div>
-            <div id="largecaption">
-              <div class="captionShine"></div>
-              <div class="captionContent"></div>  
-            </div>
-            <div id="largetrans"></div>
-          </div>
-          </div>
-          <div class="thumbnails">
-          <br><br>
-          {% for photo in last_album.photo_set.all %}
-          <!-- start entry-->
-          <div class="thumbnailimage">
-            <div class="thumb_container"> 
-              <div class="large_thumb">
-              <img src="{{ photo.photo|thumbnail_url:'thumb' }}" class="large_thumb_image" alt="{{ photo.title }}" /> 
-              <img src="{{ photo.photo|thumbnail_url:'photo' }}" class="large_image" rel="{{ photo.description }}" />
-              <div class="large_thumb_border"></div>
-              <div class="large_thumb_shine"></div>
+{% block content %}
+  {% with banner=1 %}
+    {% include 'website/header.html' %}
+  {% endwith %}
+    {% include 'widgets/features.html' %}
+    <!-- Content -->
+      <div id="content-wrapper">
+        <div id="content">
+          <div class="5grid-layout">
+            <div class="row">
+              <div class="4u">
+                <!-- Box #1 -->
+                  <section>
+                    <header>
+                      <h2>Who We Are</h2>
+                      <h3>A subheading about who we are</h3>
+                    </header>
+                    <a href="#" class="feature-image"><img src="{{ STATIC_URL }}images/pic05.jpg" alt="" /></a>
+                    <p>
+                      Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed. 
+                      Suspendisse eu varius nibh. Suspendisse vitae magna eget odio amet mollis 
+                      justo facilisis quis. Sed sagittis mauris amet tellus gravida lorem ipsum.
+                    </p>
+                  </section>
+              </div>
+              <div class="4u">
+                <!-- Box #2 -->
+                  <section>
+                    <header>
+                      <h2>What We Do</h2>
+                      <h3>A subheading about what we do</h3>
+                    </header>
+                    <ul class="check-list">
+                      <li>Sed mattis quis rutrum accum</li>
+                      <li>Eu varius nibh suspendisse lorem</li>
+                      <li>Magna eget odio amet mollis justo</li>
+                      <li>Facilisis quis sagittis mauris</li>
+                      <li>Amet tellus gravida lorem ipsum</li>
+                    </ul>
+                  </section>
+              </div>
+              <div class="4u">
+                <!-- Box #3 -->
+                  <section>
+                    <header>
+                      <h2>What People Are Saying</h2>
+                      <h3>And a final subheading about our clients</h3>
+                    </header>
+                    <ul class="quote-list">
+                      <li>
+                        <img src="{{ STATIC_URL }}images/pic06.jpg" alt="" />
+                        <p>"Neque nisidapibus mattis"</p>
+                        <span>Jane Doe, CEO of UntitledCorp</span>
+                      </li>
+                      <li>
+                        <img src="{{ STATIC_URL }}images/pic07.jpg" alt="" />
+                        <p>"Lorem ipsum consequat!"</p>
+                        <span>John Doe, President of FakeBiz</span>
+                      </li>
+                      <li>
+                        <img src="{{ STATIC_URL }}images/pic08.jpg" alt="" />
+                        <p>"Magna veroeros amet tempus"</p>
+                        <span>Mary Smith, CFO of UntitledBiz</span>
+                      </li>
+                    </ul>
+                  </section>
               </div>
             </div>
           </div>
-          <!--end entry-->
-          {% endfor %}
-          </div>
         </div>
-      {% endwith %}
       </div>
-      <div class="5grid-clear"></div>
-    </div>
-    </div>
-    </div>
-    <!-- Features -->
-    <div id="features-wrapper">
-    <div id="features">
-    <div class="5grid">
-    {% for album in object_list %}
-    {% if not forloop.first %}
-      <div class="3u{% if forloop.counter == 2 %}-first{% endif %}">
-      	<!-- Feature #1 -->
-		<section>
-		<a href="#" class="bordered-feature-image"><img src="{{ album.get_cover_photo.photo|thumbnail_url:'cover' }}" alt="{{ album.name }}"/></a>
-		<h2>{{ album.name }}</h2>
-		{{ album.description }}
-		</section>
-      </div>
-    {% endif %}
-    {% endfor %}
-    </div>
-    </div>
-    </div>
-    <!-- Content -->
-    <div id="content-wrapper">
-    <div id="content">
-    <div class="5grid">
-      <div class="4u-first">
-      <!-- Box #1 -->
-      <section>
-      	<header>
-          <h2>Mi perfil pe tío</h2>
-          <h3>Luego del almuercito el viejo truco del botón y la correa.</h3>
-      	</header>
-      	<a href="#" class="feature-image"><img src="{{ STATIC_URL }}images/pic05.jpg" alt="" /></a>
-      	<p>
-      		Luego del almuercito el viejo truco del botón y la correa.
-      		Trabaja en presidencia peru decian, trabajaras 48 horas semanales y tendras aumento decían.	
-      	</p>
-      </section>
-      </div>
-      <div class="4u">
-      <!-- Box #2 -->
-      <section>
-      	<header>
-          <h2>Facebook</h2>
-          <h3>contactame papi ;)</h3>
-      	</header>
-      	<ul class="check-list">
-          <li>Sed mattis quis rutrum accum</li>
-          <li>Eu varius nibh suspendisse lorem</li>
-          <li>Magna eget odio amet mollis justo</li>
-          <li>Facilisis quis sagittis mauris</li>
-          <li>Amet tellus gravida lorem ipsum</li>
-      	</ul>
-      </section>
-      </div>
-      <div class="4u">
-      <!-- Box #3 -->
-      <section>
-      	<header>
-          <h2>Lo que se dice en Twitter</h2>
-          <h3>Sigueme papi</h3>
-      	</header>
-      	<ul class="quote-list">
-        <li>
-          <img src="{{ STATIC_URL }}images/pic06.jpg" alt="" />
-          <p>"Neque nisidapibus mattis"</p>
-          <span>Jane Doe, CEO of UntitledCorp</span>
-        </li>
-        <li>
-          <img src="{{ STATIC_URL }}images/pic07.jpg" alt="" />
-          <p>"Lorem ipsum consequat!"</p>
-          <span>John Doe, President of FakeBiz</span>
-        </li>
-        <li>
-          <img src="{{ STATIC_URL }}images/pic08.jpg" alt="" />
-          <p>"Magna veroeros amet tempus"</p>
-          <span>Mary Smith, CFO of UntitledBiz</span>
-        </li>
-      	</ul>
-      </section>
-      </div>
-    </div>
-    </div>
-    </div>
 {% endblock %}
+
+
+
+
+
+
+
+

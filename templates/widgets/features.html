@@ -1,0 +1,24 @@
+    {% load thumbnail %}
+    <!-- Features -->
+      <div id="features-wrapper">
+        <div id="features">
+          <div class="5grid-layout">
+            <div class="row">
+            {% for album in object_list %}
+            {% if not forloop.first %}
+              <div class="3u">
+                <!-- Feature #1 -->
+                  <section>
+                    <a href="{% url portafolio_album album.slug %}" class="bordered-feature-image"><img src="{{ album.get_cover_photo.photo|thumbnail_url:'cover' }}" alt="{{ album.name }}" /></a>
+                    <h2>{{ album.name }}</h2>
+                    <p>
+                      {{ album.description }}
+                    </p>
+                  </section>
+              </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>

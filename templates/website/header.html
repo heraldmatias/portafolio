@@ -1,0 +1,22 @@
+    <!-- Header -->
+      <div id="header-wrapper">
+        <header id="header" class="5grid-layout">
+          <div class="row">
+            <div class="12u">
+              <!-- Logo -->
+                <h1><a href="#" class="mobileUI-site-name">Juan</a></h1>
+              <!-- Nav -->
+                <nav class="mobileUI-site-nav">
+                  <a href="{% url portafolio_index %}">Inicio</a>
+                  <a href="{% url portafolio_albumes %}">Portafolio</a>
+                  <a href="{% url portafolio_biografia %}">Biografía</a>
+                  <a href="{% url portafolio_actualidad %}">Actualidad</a>
+                  <a href="{% url portafolio_contacto %}">Contacto</a>
+                </nav>
+            </div>
+          </div>
+        </header>
+        {% if banner %}
+        {% include 'widgets/banner.html' %}
+        {% endif %}
+      </div>
