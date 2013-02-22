@@ -2,16 +2,42 @@
         <div id="banner">
           <div class="5grid-layout">
             <div class="row">
-              <div class="6u">
+              <div class="4u">
                 <!-- Banner Copy -->
                   <p>We do something really useful, important, and unique. Learn all about it here ...</p>
                   <a href="#" class="button-big">Go on, click me!</a>
               </div>
-              <div class="6u">
-              {% with last_album=object_list.0 %}
-                <!-- Banner Image -->
-                  <a href="#" class="bordered-feature-image"><img src="{{ last_album.get_cover_photo.photo|thumbnail_url:'banner' }}" alt="{{ last_album.name }}" /></a>
-              {% endwith %}
+              <div class="8u">
+              <div id="container">
+                <div class="mainframe">
+                <div id="largephoto">
+                <div id="loader"></div>
+                  <div id="largecaption">
+                  <div class="captionShine"></div>
+                  <div class="captionContent"></div>
+                  </div>
+                  <div id="largetrans"></div>
+                </div>
+                </div>
+                {% with album=object_list.0 %}
+                <div class="thumbnails">
+                {% for photo in album.photo_set.all %}
+                {% if forloop.counter <= 9 %}
+                  <div class="thumbnailimage">
+                  <div class="thumb_container"> 
+                  <div class="large_thumb"> 
+                    <img src="{{ photo.photo|thumbnail_url:'thumb' }}" class="large_thumb_image" alt="thumb" /> 
+                    <img src="{{ photo.photo|thumbnail_url:'banner' }}" class="large_image" rel="{{ photo.title }}" />
+                    <div class="large_thumb_border"></div>
+                    <div class="large_thumb_shine"></div>
+                  </div>
+                  </div>
+                  </div>
+                {% endif %}
+                {% endfor %}
+                </div>
+                {% endwith %}       
+              </div>
               </div>
             </div>
           </div>
