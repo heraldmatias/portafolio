@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, CreateView
+from django.core.urlresolvers import reverse
 
 from album.models import Album
-from .models import Pagina
+
+from .models import Pagina, Contact
+from .forms import ContactForm
 
 
 class IndexView(ListView):
@@ -16,12 +19,17 @@ class IndexView(ListView):
         return albums
 
 
-class ContactView(TemplateView):
-    template_name = "contacto.html"
+class ContactCreateView(CreateView):
+
+    model = Contact
+    form_class = ContactForm
+    template_name = "website/contact.html"
+    success_url = "/recibido/"
 
 
-class PortfolioView(TemplateView):
-    template_name = "portafolio.html"
+class ContactSuccessView(TemplateView):
+
+    template_name = "website/contact_success.html"
 
 
 class PresentView(TemplateView):

@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 
-from .models import Pagina
+from .models import Pagina, Contact
 
 
 class PaginaAdmin(admin.ModelAdmin):
@@ -24,6 +24,12 @@ class PortafolioFlatPageAdmin(FlatPageAdmin):
 
     class Media:
         js = ("tinymce/jscripts/tiny_mce/tiny_mce.js", "js/jscontenido.js")
+
+
+class ContactAdmin(admin.ModelAdmin):
+
+    list_display = ('person', 'subject', 'email', 'created')
+
 
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, PortafolioFlatPageAdmin)
