@@ -182,7 +182,7 @@ THUMBNAIL_ALIASES = {
     '': {
         'cover': {'size': (262, 110), 'crop': True},
         'thumb': {'size': (54, 54), 'crop': True},
-        'photo': {'size': (445, 380)},
+        'photo': {'size': (445, 380), 'crop': True},
         'banner': {'size': (568, 191), 'crop': True},
     },
 }

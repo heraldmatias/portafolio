@@ -32,7 +32,7 @@ class Album(models.Model):
 class Photo(models.Model):
 
     album = models.ForeignKey(Album)
-    title = models.CharField(_(u'Título'), max_length=250)
+    title = models.CharField(_(u'Título'), max_length=250, blank=True)
     slug = models.SlugField()
     photo = models.ImageField(_(u'Foto'), upload_to='fotos/')
     description = models.TextField(_(u'Descipción'), blank=True)

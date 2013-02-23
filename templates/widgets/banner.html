@@ -11,23 +11,23 @@
               <div id="container">
                 <div class="mainframe">
                 <div id="largephoto">
+                {% with album=object_list.0 %}
                 <div id="loader"></div>
                   <div id="largecaption">
                   <div class="captionShine"></div>
                   <div class="captionContent"></div>
                   </div>
-                  <div id="largetrans"></div>
+                  <a href="{% url portafolio_album album.slug %}"><div id="largetrans"></div></a>
                 </div>
                 </div>
-                {% with album=object_list.0 %}
                 <div class="thumbnails">
                 {% for photo in album.photo_set.all %}
-                {% if forloop.counter <= 9 %}
+                {% if forloop.counter <= 15 %}
                   <div class="thumbnailimage">
                   <div class="thumb_container"> 
                   <div class="large_thumb"> 
                     <img src="{{ photo.photo|thumbnail_url:'thumb' }}" class="large_thumb_image" alt="thumb" /> 
-                    <img src="{{ photo.photo|thumbnail_url:'banner' }}" class="large_image" rel="{{ photo.title }}" />
+                    <img src="{{ photo.photo|thumbnail_url:'photo' }}" class="large_image" rel="{{ photo.title }}" />
                     <div class="large_thumb_border"></div>
                     <div class="large_thumb_shine"></div>
                   </div>

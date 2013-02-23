@@ -13,7 +13,7 @@
   {
   {% with album=object_list.0 %}
    /*Your ShineTime Welcome Image*/
-   var default_image = "{{ album.get_cover_photo.photo|thumbnail_url:'banner' }}";
+   var default_image = "{{ album.get_cover_photo.photo|thumbnail_url:'photo' }}";
    var default_caption = '{{ album.name }}';
   {% endwith %}
    /*Load The Default Image*/
