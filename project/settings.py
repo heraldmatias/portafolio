@@ -184,5 +184,7 @@ THUMBNAIL_ALIASES = {
         'thumb': {'size': (54, 54), 'crop': True},
         'photo': {'size': (445, 380), 'crop': True},
         'banner': {'size': (568, 191), 'crop': True},
+        'album_thums': {'size': (170, 170), 'crop': True},
+        'album_photo': {'size': (465, 400), 'crop': True},
     },
 }

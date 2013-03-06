@@ -6,18 +6,24 @@
     #gallery {
       background-color: #444;
       padding: 10px;
-      width: 520px;
+      border-radius:10px;
     }
     #gallery ul { list-style: none; }
     #gallery ul li { display: inline; }
     #gallery ul img {
       border: 5px solid #3e3e3e;
-      border-width: 5px 5px 20px;
+      /*border-width: 5px 5px 20px;*/
+      -moz-border-radius: 90px; 
+      -webkit-border-radius: 90px; 
+      border-radius: 90px;
     }
     #gallery ul a:hover img {
       border: 5px solid #fff;
-      border-width: 5px 5px 20px;
+      /*border-width: 5px 5px 20px;*/
       color: #fff;
+      -moz-border-radius: 90px; 
+      -webkit-border-radius: 90px; 
+      border-radius: 90px;
     }
     #gallery ul a:hover { color: #fff; }
     </style>
@@ -30,6 +36,7 @@
     });
     </script>
 {% endblock %}
+{% load thumbnail %}
 {% block content %}
     {% include 'website/header.html' %}
     <!-- Content -->
@@ -51,8 +58,8 @@
                       <ul>
                         {% for photo in object.photo_set.all %}
                         <li>
-                          <a href="{{ photo.photo.url }}" title="{{ photo.description }}">
-                            <img src="{{ photo.photo.url }}" width="72" height="72" alt="" />
+                          <a href="{{ photo.photo|thumbnail_url:'album_photo' }}" title="{{ photo.description }}">
+                            <img src="{{ photo.photo|thumbnail_url:'album_thums' }}" alt="" />
                           </a>
                         </li>
                         {% endfor %}
