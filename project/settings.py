@@ -181,10 +181,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 THUMBNAIL_ALIASES = {
     '': {
         'cover': {'size': (262, 110), 'crop': True},
-        'thumb': {'size': (54, 54), 'crop': True},
-        'photo': {'size': (338, 289), 'crop': True},
+        'thumb': {'size': (74, 74), 'crop': True},
+        'photo': {'size': (455, 364), 'crop': True},
         'banner': {'size': (568, 191), 'crop': True},
-        'album_thums': {'size': (170, 170), 'crop': True},
-        'album_photo': {'size': (465, 400), 'crop': True},
+        'album_thums': {'size': (210, 210), 'crop': True},
+        'album_photo': {'size': (615, 550), 'crop': True},
     },
 }

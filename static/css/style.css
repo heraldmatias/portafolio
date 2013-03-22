@@ -242,3 +242,7 @@
 		background-image: -o-linear-gradient(top, #ce1a00, #ed391b);
 		background-image: linear-gradient(top, #ce1a00, #ed391b);
 	}
+	
+.porta_imagen{
+	float:left; margin: 0 5px 5px;
+}

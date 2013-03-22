@@ -1,14 +1,12 @@
-#container { width:100%; margin:0 auto; border-radius:3px}
-.mainframe { width: 500px; height:385px; float:left}
-.thumbnails { float:rigth; width:293px; height:385px; background-repeat:no-repeat; background-image:url('../images/interface/total_grid.png'); background-position:9px 8px; }
+.thumbnails { float:center; width:294px; height:386px; background-repeat:no-repeat; background-image:url('../images/interface/total_grid.png'); background-position:9px 8px; }
 .thumbnailimage { float:left; padding:7px;}
-.large_thumb	{float:left; position: relative; width:64px; height:64px; padding:0px 10px 0px 0;}
+.large_thumb	{float:left; position: relative; width:84px; height:84px; padding:0px 10px 0px 0;}
 img.large_thumb_image	{position:absolute; left:5px; top:4px;}
-.large_thumb_border	{width:64px; height:64px; background:url('../images/interface/thumb_border.png'); position:absolute; }
-.large_thumb_shine	{width:54px; height:54px; background:url('../images/interface/shine.png'); position:absolute; background-position:-150px 0; left:5px; top:4px; background-repeat:no-repeat;}
-.thumb_container { width:64px; height:64px; background-image:url('../images/interface/thumb_holder.png'); }
-#largephoto { width: 350px; height:290px; background-color:#333333; margin-top:5px; margin-left:40px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-left: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; }
-#largetrans { width: 350px; height:290px; background-image:url('../images/interface/main_bg_trans.png'); -moz-border-radius: 10px; -webkit-border-radius: 10px;}
+.large_thumb_border	{width:84px; height:84px; background:url('../images/interface/thumb_border.png'); position:absolute; }
+.large_thumb_shine	{width:74px; height:74px; background:url('../images/interface/shine.png'); position:absolute; background-position:-150px 0; left:5px; top:4px; background-repeat:no-repeat;}
+.thumb_container { width:84px; height:84px; background-image:url('../images/interface/thumb_holder.png'); }
+#largephoto { width: 465px; height:365px; background-color:#333333; margin-top:5px; margin-left:40px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-left: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000; }
+#largetrans { width: 465px; height:365px; background-image:url('../images/interface/main_bg_trans.png'); -moz-border-radius: 10px; -webkit-border-radius: 10px;}
 .large_image { display:none}
 #containertitle { position:absolute; margin-left:40px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; text-shadow: 0px 1px 2px #fff;}
 #largecaption {  text-align:center; height:120px; width:100%; background-color:#111; position:absolute; width: 350px; margin-top:170px; -moz-border-radius-bottomleft: 10px;  -moz-border-radius-bottomright: 10px; -webkit-border-bottom-left-radius: 10px; -webkit-border-bottom-right-radius: 10px; display:none; color:#fff; font-size:30px; font-family:Arial; letter-spacing:-1px; font-weight:bold}
