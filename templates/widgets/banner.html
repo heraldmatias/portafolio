@@ -2,32 +2,29 @@
         <div id="banner">
           <div class="5grid-layout">
             <div class="row">
-              <div class="4u">
-                <!-- Banner Copy -->
-                  <p>We do something really useful, important, and unique. Learn all about it here ...</p>
-                  <a href="#" class="button-big">Go on, click me!</a>
-              </div>
-              <div class="8u">
-              <div id="container">
+            <div class="6u">
                 <div class="mainframe">
                 <div id="largephoto">
                 {% with album=object_list.0 %}
                 <div id="loader"></div>
-                  <div id="largecaption">
+                <div id="largecaption">
                   <div class="captionShine"></div>
                   <div class="captionContent"></div>
-                  </div>
-                  <a href="{% url portafolio_album album.slug %}"><div id="largetrans"></div></a>
+                </div>
+                <a id="slug_url" href="{% url portafolio_album album.slug %}"><div id="largetrans"></div></a>
+                {% endwith %}
                 </div>
                 </div>
+            </div>
+            <div class="6u">
                 <div class="thumbnails">
-                {% for photo in album.photo_set.all %}
-                {% if forloop.counter <= 15 %}
+                {% for album in object_list %}
+                {% if forloop.counter >= 1 %}
                   <div class="thumbnailimage">
                   <div class="thumb_container"> 
                   <div class="large_thumb"> 
-                    <img src="{{ photo.photo|thumbnail_url:'thumb' }}" class="large_thumb_image" alt="thumb" /> 
-                    <img src="{{ photo.photo|thumbnail_url:'photo' }}" class="large_image" rel="{{ photo.title }}" />
+                    <img src="{{ album.get_cover_photo.photo|thumbnail_url:'thumb' }}" class="large_thumb_image" alt="thumb" /> 
+                    <img src="{{ album.get_cover_photo.photo|thumbnail_url:'photo' }}" class="large_image" rel="{{ album.name }}" alter-url="{% url portafolio_album album.slug %}"/>
                     <div class="large_thumb_border"></div>
                     <div class="large_thumb_shine"></div>
                   </div>
@@ -36,9 +33,7 @@
                 {% endif %}
                 {% endfor %}
                 </div>
-                {% endwith %}       
-              </div>
-              </div>
+            </div>
             </div>
           </div>
         </div>
