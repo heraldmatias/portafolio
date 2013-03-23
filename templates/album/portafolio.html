@@ -16,10 +16,8 @@
                       <!--h3>Another generic two column layout</h3-->
                     </header>
                     <div>
-                    <p>
-                      <img class="porta_imagen" src="{{ album.get_cover_photo.photo|thumbnail_url:'cover' }}" alt="{{ album.name }}"/>
+                      <img class="porta_imagen" src="{{ album.get_cover_photo.photo|thumbnail_url:'banner' }}" alt="{{ album.name }}"/>
                       {{ album.description|safe }}
-                    </p>
                     </div>
                     <div><p><a href="{% url portafolio_album album.slug %}">Ver album</a></p></div>
                   </section>
