@@ -251,7 +251,7 @@
 display: block;
 position: fixed;
 width: 344px;
-height: 580px;
+height: 480px;
 top: 12px;
 left: -314px;
 z-index: 9999;
@@ -268,4 +268,7 @@ position: relative;
 float: right;
 background: #3B5998;
 padding: 10px;
+}
+#fbside	#fbsideifrm {
+background: white;
 }
