@@ -246,3 +246,27 @@
 .porta_imagen{
 	float:left; margin: 0 5px 5px;
 }
+
+#fbside {
+display: block;
+position: fixed;
+width: 344px;
+height: 400px;
+top: 172px;
+left: -314px;
+z-index: 9999;
+}
+#fbside	#fbsidebtn {
+position: relative;
+float: right;
+width: 32px;
+height: 113px;
+display: block;
+}
+
+#fbside	#fbsidecnt {
+position: relative;
+float: right;
+background: #3B5998;
+padding: 10px;
+}
