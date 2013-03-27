@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.core.mail import send_mail
 from utils.classes import Enumeration
 
 
@@ -50,3 +50,7 @@ class Contact(models.Model):
 
     def __unicode__(self):
         return u"Mesanje de: %s, con el asunto: %s" % (self.person, self.subject)
+
+    def save(self, *args, **kwargs):
+        super(Contact, self).save(*args,**kwargs)
+        send_mail(self.subject, self.message, self.email, ['lara.flores.jesus@gmail.com'], fail_silently=False)
