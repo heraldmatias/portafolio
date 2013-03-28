@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% block css %}
+<style type="text/css">
+.pagination{
+  float: right;
+  position: relative;
+}
+</style>
+{% endblock %}
 {% block content %}
     {% include 'website/header.html' %}
     <!-- Content -->
@@ -8,11 +16,26 @@
           <div class="5grid-layout">
             <div class="row">
               <div class="12u-first">
-                {% for album in object_list %}
+                {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{% url portafolio_albumes_page page_obj.previous_page_number %}">Anterior</a>
+                {% endif %}
+                <span class="page-current">
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url portafolio_albumes_page page_obj.next_page_number %}">Siguiente</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+                {% for album in page_obj %}
                 <!-- Main Content -->
                   <section>
                     <header>
-                      <h2>{{ album.name|title }}</h2>
+                      <h2>{{ album.name|title }} {{ is_paginated }}</h2>
                       <!--h3>Another generic two column layout</h3-->
                     </header>
                     <div>

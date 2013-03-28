@@ -9,7 +9,7 @@ class AlbumListView(ListView):
 
     template_name = "album/portafolio.html"
     model = Album
-    paginated_by = 5
+    paginate_by = 5
 
 
 class AlbumDetailView(DetailView):
