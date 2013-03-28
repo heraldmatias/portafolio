@@ -15,7 +15,7 @@ class IndexView(ListView):
     model = Album
 
     def get_queryset(self):
-        albums = Album.objects.all()[:5]
+        albums = Album.objects.all()[:12]
         return albums
 
 

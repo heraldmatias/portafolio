@@ -5,7 +5,7 @@
           <div class="5grid-layout">
             <div class="row">
             {% for album in object_list %}
-            {% if not forloop.first %}
+            {% if forloop.counter <= 4 %}
               <div class="3u">
                 <!-- Feature #1 -->
                   <section>
