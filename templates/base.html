@@ -34,11 +34,7 @@
     {% comment %} {% include 'website/footer.html' %} {% endcomment %}
     <!-- Copyright -->
     <div id="copyright">
-        "Luego del almuerzo, el viejo truco del botón y la correa"
-        <br>
-        Telf: 987-408877 | Correo: <a href="mailto:lara.flores.jesus@gmail.com">lara.flores.jesus@gmail.com</a> | <a href="/contacto/">Contacto</a>
-        <br>
-        Copyright &copy; 2013 Jesús Lara Flores. Todos los derechos reservados.
+       {{ piepagina|safe }}
     </div>
     {% block js %}{% endblock %}
   </body>

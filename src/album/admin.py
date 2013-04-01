@@ -9,8 +9,7 @@ from .models import Album, Photo
 
 class PhotoInline(admin.TabularInline):
     model = Photo
-    exclude = ['slug']
-    max_num = 12
+    exclude = ['slug']    
     extra = 1
 
 

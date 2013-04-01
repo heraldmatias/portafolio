@@ -8,8 +8,8 @@ from .models import Pagina, Contact
 
 
 class PaginaAdmin(admin.ModelAdmin):
-    list_display = ('titulo','tipo','creador',)
-    list_display_links = ('titulo',)
+    list_display = ('tipo','creador',)
+    list_display_links = ('tipo',)
     exclude = ['creador']
 
     def save_model(self, request, obj, form, change):

@@ -8,6 +8,16 @@ from album.models import Album
 from .models import Pagina, Contact
 from .forms import ContactForm
 
+def get_initial_data():
+    piepagina = None
+    try:
+        piepagina = Pagina.objects.all().get(tipo=0).contenido
+    except:
+        pass
+    data = {
+        'piepagina' : piepagina,
+    }
+    return data
 
 class IndexView(ListView):
 
@@ -18,6 +28,10 @@ class IndexView(ListView):
         albums = Album.objects.all()[:12]
         return albums
 
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context.update(get_initial_data())
+        return context
 
 class ContactCreateView(CreateView):
 
@@ -26,11 +40,19 @@ class ContactCreateView(CreateView):
     template_name = "website/contact.html"
     success_url = "/recibido/"
 
+    def get_context_data(self, **kwargs):
+        context = super(ContactCreateView, self).get_context_data(**kwargs)
+        context.update(get_initial_data())
+        return context
 
 class ContactSuccessView(TemplateView):
 
     template_name = "website/contact_success.html"
 
+    def get_context_data(self, **kwargs):
+        context = super(ContactSuccessView, self).get_context_data(**kwargs)
+        context.update(get_initial_data())
+        return context
 
 class PresentView(TemplateView):
     template_name = "actualidad.html"

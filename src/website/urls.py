@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^recibido/$', ContactSuccessView.as_view(), name='portafolio_recibido'),
 )
 
-urlpatterns += patterns('django.contrib.flatpages.views',
+urlpatterns += patterns('utils.views',
     url(r'^biografia/$',
         'flatpage',
         {'url': '/biografia/'},

@@ -9,28 +9,21 @@ from utils.classes import Enumeration
 class Pagina(models.Model):
 
     TIPOS = Enumeration([
-        (0, 'BIOGRAPHY', u'Biografía'),
-        (1, 'PRESENT', u'Actualidad'),
+        (0, 'BIOGRAPHY', u'Pie de Pagina'),        
     ])
 
     tipo = models.IntegerField(
                                verbose_name='Tipo pagina',
-                               choices=TIPOS)
-    titulo = models.CharField(
-                              verbose_name='Título de la Pagina',
-                              max_length=150)
-    descripcion = models.CharField(
-                                   verbose_name='Descripción de la Pagina',
-                                   max_length=300)
+                               choices=TIPOS, unique=True)    
     contenido = models.TextField(verbose_name='Contenido de la pagina')
     creador = models.ForeignKey(User)
 
     class Meta:
-    	verbose_name = 'Pagina'
-    	verbose_name_plural = 'Paginas'
+    	verbose_name = 'Sección de Pagina'
+    	verbose_name_plural = 'Secciones de Pagina'
 
     def __unicode__(self):
-        return self.titulo
+        return self.TIPOS.get_string(self.tipo)
 
     def type(self):
         return self.TIPOS.get_string(self.tipo)
@@ -53,4 +46,4 @@ class Contact(models.Model):
 
     def save(self, *args, **kwargs):
         super(Contact, self).save(*args,**kwargs)
-        send_mail(self.subject, self.message, self.email, ['lara.flores.jesus@gmail.com'], fail_silently=False)
+        send_mail(self.subject, self.message, self.email, ['heraldmatias.oz@gmail.com'], fail_silently=False)
