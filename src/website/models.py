@@ -9,7 +9,9 @@ from utils.classes import Enumeration
 class Pagina(models.Model):
 
     TIPOS = Enumeration([
-        (0, 'BIOGRAPHY', u'Pie de Pagina'),        
+        (0, 'BIOGRAPHY', u'Pie de Pagina'),
+        (1, 'DESCRIPTION', u'Descripcion'),
+        (2, 'KEYWORDS', u'Palabras Claves'),
     ])
 
     tipo = models.IntegerField(

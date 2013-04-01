@@ -9,13 +9,19 @@ from .models import Pagina, Contact
 from .forms import ContactForm
 
 def get_initial_data():
-    piepagina = None
+    piepagina = descripcion = tags = None
     try:
-        piepagina = Pagina.objects.all().get(tipo=0).contenido
+        secciones = Pagina.objects.all().order_by('tipo').values('contenido')
+        print secciones
+        piepagina = secciones[0]['contenido']
+        tags = secciones[1]['contenido']
+        descripcion = secciones[2]['contenido']
     except:
         pass
     data = {
         'piepagina' : piepagina,
+        'descripcion' : descripcion,
+        'tags' : tags,
     }
     return data
 
