@@ -13,9 +13,9 @@ def get_initial_data():
     try:
         secciones = Pagina.objects.all().order_by('tipo').values('contenido')
         print secciones
-        piepagina = secciones[0]['contenido']
-        tags = secciones[1]['contenido']
-        descripcion = secciones[2]['contenido']
+        piepagina = secciones[0]['contenido']        
+        descripcion = secciones[1]['contenido']
+        tags = secciones[2]['contenido']
     except:
         pass
     data = {
