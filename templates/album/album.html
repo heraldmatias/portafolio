@@ -24,6 +24,7 @@
       border-radius: 130px;
     }
     #gallery ul a:hover { color: #fff; }
+    .galery_photo{ color : #444444}
     </style>
 {% endblock %}
 {% block js%}
@@ -56,7 +57,7 @@
                       <ul>
                         {% for photo in object.photo_set.all %}
                         <li>
-                          <a href="{{ photo.photo|thumbnail_url:'album_photo' }}" title="{{ photo.description }}">
+                          <a class="galery_photo" href="{{ photo.photo|thumbnail_url:'album_photo' }}" title="{{ photo.description }}">
                             <img src="{{ photo.photo|thumbnail_url:'album_thums' }}" alt="" />
                           </a>
                         </li>

@@ -17,18 +17,45 @@
     <script src="{{ STATIC_URL }}css/5grid/jquery.js"></script>
     <script src="{{ STATIC_URL }}css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI.titleBarHeight=55&amp;mobileUI.openerWidth=75&amp;mobileUI.openerText=&lt;"></script>
     <!--[if lte IE 9]><link rel="stylesheet" href="{{ STATIC_URL }}css/style-ie9.css" /><![endif]-->
+    <script type="text/javascript">
+    $(function(){ 
+    $('#fbsidebtn').hover(
+        function(){
+            $('#fbside').animate({'left': '0px'},{queue:false});
+        }
+    );
+    
+    $('#fbside').hover(
+        function() {},
+        function(){
+            $('#fbside').animate({'left': '-314px'},{queue:false});
+        }
+    );
+    });
+    </script>
     {% block css %}
     {% endblock %}
   </head>
   <body>
+        <div id="fbside" style="left: -314px;">
+    <div id="fbsidebtn"><img src="{{ STATIC_URL }}images/fbside.png" style="display: inline-block;"></div>
+    <div id="fbsidecnt">
+        <div id="fbsideifrm">
+            <iframe src="http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/pages/Jes%C3%BAs-A-Lara-Fotograf%C3%ADa/171915489626664&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%233B5998&amp;stream=true&amp;header=false&amp;height=558" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:480px;" allowtransparency="true"></iframe>
+        </div>
+    </div>
+</div>
     {% block content %}
     {% endblock %}
     {% comment %} {% include 'website/footer.html' %} {% endcomment %}
     <!-- Copyright -->
     <div id="copyright">
-      &copy; Jesús Lara. All rights reserved.
+        "Luego del almuerzo, el viejo truco del botón y la correa"
+        <br>
+        Telf: 987-408877 | Correo: <a href="mailto:lara.flores.jesus@gmail.com">lara.flores.jesus@gmail.com</a> | <a href="/contacto/">Contacto</a>
+        <br>
+        Copyright &copy; 2013 Jesús Lara Flores. Todos los derechos reservados.
     </div>
-    {% block js %}
-    {% endblock %}
+    {% block js %}{% endblock %}
   </body>
 </html>
