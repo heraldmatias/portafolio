@@ -16,8 +16,8 @@ class PaginaAdmin(admin.ModelAdmin):
         obj.creador = request.user
         obj.save()
 
-    class Media:        
-        js = ("tinymce/jscripts/tiny_mce/tiny_mce.js", "js/jscontenido.js")
+    #class Media:        
+    #    js = ("tinymce/jscripts/tiny_mce/tiny_mce.js", "js/jscontenido.js")
 
 
 class PortafolioFlatPageAdmin(FlatPageAdmin):
