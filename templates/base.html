@@ -16,23 +16,7 @@
     <link href="{{ STATIC_URL }}images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <script src="{{ STATIC_URL }}css/5grid/jquery.js"></script>
     <script src="{{ STATIC_URL }}css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI.titleBarHeight=55&amp;mobileUI.openerWidth=75&amp;mobileUI.openerText=&lt;"></script>
-    <!--[if lte IE 9]><link rel="stylesheet" href="{{ STATIC_URL }}css/style-ie9.css" /><![endif]-->
-    <script type="text/javascript">
-    $(function(){ 
-    $('#fbsidebtn').hover(
-        function(){
-            $('#fbside').animate({'left': '0px'},{queue:false});
-        }
-    );
-    
-    $('#fbside').hover(
-        function() {},
-        function(){
-            $('#fbside').animate({'left': '-314px'},{queue:false});
-        }
-    );
-    });
-    </script>
+    <!--[if lte IE 9]><link rel="stylesheet" href="{{ STATIC_URL }}css/style-ie9.css" /><![endif]-->    
     {% block css %}
     {% endblock %}
   </head>
@@ -58,4 +42,33 @@
     </div>
     {% block js %}{% endblock %}
   </body>
+  <script type="text/javascript">
+    $(function(){ 
+    $('#fbsidebtn').hover(
+        function(){
+            $('#fbside').animate({'left': '0px'},{queue:false});
+        }
+    );
+    
+    $('#fbside').hover(
+        function() {},
+        function(){
+            $('#fbside').animate({'left': '-314px'},{queue:false});
+        }
+    );
+    });
+
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-39774416-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+
+    </script>
 </html>
