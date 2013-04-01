@@ -5,7 +5,8 @@ from os.path import dirname, join, realpath, split
 SYSTEM_PATH, PROJECT_DIR = split(realpath(dirname(__file__)))
 
 ADMINS = (
-    ('Herald Olivares', 'heraldmatias.oz@gmail.com'),    
+    ('Herald Olivares', 'heraldmatias.oz@gmail.com'),
+    ('Miguel', 'themiseck.rock@gmail.com'),
 )
 
 FCGI_OPTIONS = {
