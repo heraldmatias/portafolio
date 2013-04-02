@@ -272,3 +272,32 @@ padding: 10px;
 #fbside	#fbsideifrm {
 background: white;
 }
+
+#twside {
+display: block;
+position: fixed;
+width: 344px;
+height: 550px;
+top: 130px;
+left: -314px;
+z-index: 9999;
+}
+#twside	#twsidebtn {
+position: relative;
+float: right;
+width: 32px;
+height: 113px;
+}
+
+#twside	#twsidecnt {
+position: relative;
+float: right;
+background: #33CCFF;
+padding: 10px;
+}
+#twside	#twsideifrm {
+background: white;
+}
+#twside	#twsideifrm iframe{
+width: 292px;
+}

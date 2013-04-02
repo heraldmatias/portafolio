@@ -28,6 +28,7 @@
     <script src="{{ STATIC_URL }}css/5grid/jquery.js"></script>
     <script src="{{ STATIC_URL }}css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI.titleBarHeight=55&amp;mobileUI.openerWidth=75&amp;mobileUI.openerText=&lt;"></script>
     <!--[if lte IE 9]><link rel="stylesheet" href="{{ STATIC_URL }}css/style-ie9.css" /><![endif]-->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     <script type="text/javascript">
     $(function(){ 
     $('#fbsidebtn').hover(
@@ -42,20 +43,40 @@
             $('#fbside').animate({'left': '-314px'},{queue:false});
         }
     );
+    $('#twsidebtn').hover(
+        function(){
+            $('#twside').animate({'left': '0px'},{queue:false});
+        }
+    );
+    
+    $('#twside').hover(
+        function() {},
+        function(){
+            $('#twside').animate({'left': '-314px'},{queue:false});
+        }
+    );
     });
     </script>
     {% block css %}
     {% endblock %}
   </head>
   <body>
-        <div id="fbside" style="left: -314px;">
-    <div id="fbsidebtn"><img src="{{ STATIC_URL }}images/fbside.png" style="display: inline-block;"></div>
-    <div id="fbsidecnt">
+    <div id="fbside" style="left: -314px;">
+        <div id="fbsidebtn"><img src="{{ STATIC_URL }}images/fbside.png" style="display: inline-block;"></div>
+        <div id="fbsidecnt">
         <div id="fbsideifrm">
             <iframe src="http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/pages/Jes%C3%BAs-A-Lara-Fotograf%C3%ADa/171915489626664&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%233B5998&amp;stream=true&amp;header=false&amp;height=558" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:550px;" allowtransparency="true"></iframe>
         </div>
     </div>
-</div>
+    </div>
+    <div id="twside" style="left: -314px;">
+        <div id="twsidebtn"><img src="{{ STATIC_URL }}images/twside.png" style="display: inline-block;"></div>
+        <div id="twsidecnt">
+        <div id="twsideifrm">
+            <a class="twitter-timeline"  href="https://twitter.com/jesuslaraflores"  data-widget-id="319152550731456512">Tweets por @jesuslaraflores</a>
+        </div>
+    </div>
+    </div>
     {% block content %}
     {% endblock %}
     {% comment %} {% include 'website/footer.html' %} {% endcomment %}
