@@ -2,7 +2,7 @@
 
 from django.views.generic import TemplateView, ListView, CreateView
 from django.core.urlresolvers import reverse
-
+from django.http import HttpResponseRedirect
 from album.models import Album
 
 from .models import Pagina, Contact
@@ -66,3 +66,6 @@ class PresentView(TemplateView):
 
 class InternalErrorView(TemplateView):
     template_name = "500.html"
+
+def portafolio_redirect_view(request, template_name='404.html'):    
+    return HttpResponseRedirect('/')

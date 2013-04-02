@@ -15,13 +15,14 @@ urlpatterns = patterns('',
     (r'', include('website.urls')),
 )
 
-handler500 = 'home.views.internal_error_view'
+handler500 = 'website.views.internal_error_view'
+handler404 = 'website.views.portafolio_redirect_view'
 
-if settings.DEBUG:
-    from django.views.static import serve
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$',
-            serve, {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-        url(r'^static/(?P<path>.*)$',
-            serve, {'document_root': settings.STATIC_ROOT}),    
-    )
+#if settings.DEBUG:
+from django.views.static import serve
+urlpatterns += patterns('',
+    url(r'^media/(?P<path>.*)$',
+        serve, {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+    url(r'^static/(?P<path>.*)$',
+        serve, {'document_root': settings.STATIC_ROOT}),    
+)
