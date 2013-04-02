@@ -64,7 +64,7 @@
                       <ul id="gallery">
                         {% for photo in object.photo_set.all %}
                         <li>
-                          <a class="galery_photo" href="{{ photo.photo.url }}" title="{{ photo.description }}">
+                          <a class="galery_photo" href="{{ photo.photo|thumbnail_url:'album_photo' }}" title="{{ photo.description }}">
                             <img src="{{ photo.photo|thumbnail_url:'album_thums' }}" alt="" />
                           </a>
                         </li>
