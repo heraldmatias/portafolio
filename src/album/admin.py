@@ -9,13 +9,14 @@ from .models import Album, Photo
 
 class PhotoInline(admin.TabularInline):
     model = Photo
-    exclude = ['slug']    
+    exclude = ['slug']
     extra = 1
 
 
 class AlbumAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created')
+    list_display = ('name', 'created', 'order', )
     exclude = ['slug']
+    list_editable = ['order', ]
     inlines = [
         PhotoInline,
     ]

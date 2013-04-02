@@ -10,10 +10,11 @@ class Album(models.Model):
     name = models.CharField(_(u'Nombre'), max_length=250)
     slug = models.SlugField()
     description = models.TextField(_(u'Descipción'), blank=True)
+    order = models.IntegerField(_(u'Orden'))
     created = models.DateTimeField(auto_now=True, auto_now_add=True)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['order']
         verbose_name = "Album"
         verbose_name_plural = "Albums"
 
