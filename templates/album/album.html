@@ -1,37 +1,44 @@
 {% extends 'base.html' %}
 {% block css %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.lightbox-0.5.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="{{ STATIC_URL }}js/photobox/photobox.css">
+  <!--[if lt IE 9]><link rel="stylesheet" href="{{ STATIC_URL }}js/photobox/photobox.ie.css"><![endif]-->
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->    
+    <!--<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.lightbox-0.5.css" type="text/css" media="screen"/>-->
     <style type="text/css">
     /* jQuery lightBox plugin - Gallery style */
-    #gallery {
+    #gallery-box {
       background-color: #444;
       padding: 10px;
       border-radius:10px;
     }
-    #gallery ul { list-style: none; }
-    #gallery ul li { display: inline; }
-    #gallery ul img {
+    #gallery-box ul { list-style: none; }
+    #gallery-box ul li { display: inline; }
+    #gallery-box ul img {
       border: 5px solid #3e3e3e;
       -moz-border-radius: 130px; 
       -webkit-border-radius: 130px; 
       border-radius: 130px;
     }
-    #gallery ul a:hover img {
+    #gallery-box ul a:hover img {
       border: 5px solid #fff;
       color: #fff;
       -moz-border-radius: 130px; 
       -webkit-border-radius: 130px; 
       border-radius: 130px;
     }
-    #gallery ul a:hover { color: #fff; }
+    #gallery-box ul a:hover { color: #fff; }
     .galery_photo{ color : #444444}
     </style>
 {% endblock %}
 {% block js%}
-    <script src="{{ STATIC_URL }}js/jquery.lightbox-0.5.min.js"></script>
+<script src='{{ STATIC_URL }}js/photobox/photobox.min.js'></script>
+    <!--<script src="{{ STATIC_URL }}js/jquery.lightbox-0.5.min.js"></script>-->
     <script type="text/javascript">
     $(function() {
-        $('#gallery a').lightBox();
+        $('#gallery').photobox('a', { thumbs:true }, callback);
+        function callback(){
+        console.log('loaded!');
+        };
     });
     </script>
 {% endblock %}
@@ -53,11 +60,11 @@
                     <p>
                     {{ object.description }}
                     </p>
-                    <div id="gallery">
-                      <ul>
+                    <div id="gallery-box">
+                      <ul id="gallery">
                         {% for photo in object.photo_set.all %}
                         <li>
-                          <a class="galery_photo" href="{{ photo.photo|thumbnail_url:'album_photo' }}" title="{{ photo.description }}">
+                          <a class="galery_photo" href="{{ photo.photo.url }}" title="{{ photo.description }}">
                             <img src="{{ photo.photo|thumbnail_url:'album_thums' }}" alt="" />
                           </a>
                         </li>
