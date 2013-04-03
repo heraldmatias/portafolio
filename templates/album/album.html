@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block metadata %}
-  <meta name="description" content="{{ object.name }}" />
-  <meta name="keywords" content="{{ objectc.name }}" />
+  <meta name="description" content="{{ object.name }} {{ object.description }}" />
+  <meta name="keywords" content="{{ object.name }}" />
 {% endblock %}
 {% block css %}
   <link rel="stylesheet" href="{{ STATIC_URL }}js/photobox/photobox.css">
