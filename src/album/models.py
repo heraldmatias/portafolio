@@ -26,7 +26,11 @@ class Album(models.Model):
         super(Album, self).save(*args, **kwargs)
 
     def get_cover_photo(self):
-        photo = self.photo_set.get(is_cover=True)
+        photo = None
+        try:
+            photo = self.photo_set.filter(is_cover=True)[0]
+        except:
+            photo = self.photo_set.all()[0]
         return photo
 
 
@@ -37,10 +41,12 @@ class Photo(models.Model):
     slug = models.SlugField()
     photo = models.ImageField(_(u'Foto'), upload_to='fotos/')
     description = models.TextField(_(u'Descipción'), blank=True)
+    order = models.IntegerField(_(u'Orden'))
     is_cover = models.BooleanField(_(u'Portada'), default=False)
     created = models.DateTimeField(auto_now=True, auto_now_add=True)
 
     class Meta:
+        ordering = ['order']
         verbose_name = "Foto"
         verbose_name_plural = "Fotos"
 
