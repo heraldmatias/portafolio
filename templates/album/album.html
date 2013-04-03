@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% block metadata %}
+  <meta name="description" content="{{ object.name }}" />
+  <meta name="keywords" content="{{ objectc.name|split }}" />
+{% endblock %}
 {% block css %}
   <link rel="stylesheet" href="{{ STATIC_URL }}js/photobox/photobox.css">
   <!--[if lt IE 9]><link rel="stylesheet" href="{{ STATIC_URL }}js/photobox/photobox.ie.css"><![endif]-->
