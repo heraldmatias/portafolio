@@ -91,6 +91,7 @@ SECRET_KEY = '=5$n0*uu0^iiu(-1g^5!(*ho^lemynmy@b@mmi1815!x!j*1e$'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+    #'website.loaders.load_template_source',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
@@ -103,7 +104,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'website.mobile.DetectMobileBrowserMiddleware'
+    'website.middleware.DetectMobileBrowserMiddleware'
 )
 
 ROOT_URLCONF = 'project.urls'
