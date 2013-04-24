@@ -11,8 +11,7 @@ from .forms import ContactForm
 def get_initial_data():
     piepagina = descripcion = tags = None
     try:
-        secciones = Pagina.objects.all().order_by('tipo').values('contenido')
-        print secciones
+        secciones = Pagina.objects.all().order_by('tipo').values('contenido')        
         piepagina = secciones[0]['contenido']        
         descripcion = secciones[1]['contenido']
         tags = secciones[2]['contenido']
