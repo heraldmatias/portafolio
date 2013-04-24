@@ -29,6 +29,6 @@ class DetectMobileBrowserMiddleware(object):
             _thread_locals.request = request
 
     def process_view(self, request, view_func, view_args, view_kwargs):
-        return HttpResponseRedirect('laraflores.com%s' % 
+        return HttpResponseRedirect('http://www.laraflores.com%s' % 
         	reverse(view_func, args=view_args, kwargs = view_kwargs) )
     	
