@@ -25,7 +25,8 @@ class Album(models.Model):
 
     def slice_tags(self):
         if self.tags:
-            return [ (t.strip(),slugify(t.strip())) for t in self.tags.split(',')]
+            return [ (t.strip(),slugify(t.strip())) 
+            for t in self.tags.split(',') if not t.strip() == '' ]
         return []
 
     def save(self, *args, **kwargs):
