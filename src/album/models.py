@@ -11,6 +11,7 @@ class Album(models.Model):
     slug = models.SlugField()
     description = models.TextField(_(u'Descipción'), blank=True)
     order = models.IntegerField(_(u'Orden'))
+    tags = models.TextField(u'Palabras Claves (TAGS)', help_text=u'Ingrese las palabras claves separadas por comas.')
     created = models.DateTimeField(auto_now=True, auto_now_add=True)
 
     class Meta:
