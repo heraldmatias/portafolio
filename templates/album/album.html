@@ -75,6 +75,10 @@
                         {% endfor %}
                       </ul>
                     </div>
+                    <b>Tags: </b>
+                    {% for tag in object.slice_tags %}
+                    <a href="{% url portafolio_albumes-tags tag.1 %}">{{ tag.0 }}</a>{% if not forloop.last %}<b style="padding-right:10px;">,<b>{% endif %}
+                    {% endfor %}
                   </section>
               </div>
             </div>

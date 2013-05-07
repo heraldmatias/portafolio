@@ -12,6 +12,7 @@ class Album(models.Model):
     description = models.TextField(_(u'Descipción'), blank=True)
     order = models.IntegerField(_(u'Orden'))
     tags = models.TextField(u'Palabras Claves (TAGS)', help_text=u'Ingrese las palabras claves separadas por comas.')
+    slug_tags = models.TextField(u'Slugify tags', blank=True, null=True)
     created = models.DateTimeField(auto_now=True, auto_now_add=True)
 
     class Meta:
@@ -22,8 +23,14 @@ class Album(models.Model):
     def __unicode__(self):
         return self.name
 
+    def slice_tags(self):
+        if self.tags:
+            return [ (t.strip(),slugify(t.strip())) for t in self.tags.split(',')]
+        return []
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
+        self.slug_tags = slugify(self.tags)
         super(Album, self).save(*args, **kwargs)
 
     def get_cover_photo(self):
