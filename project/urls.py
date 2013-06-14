@@ -3,6 +3,8 @@ from django.conf.urls.defaults import patterns, include, url
 from django.conf import settings
 from filebrowser.sites import site
 from django.contrib import admin
+from website.views import InternalErrorView
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -15,7 +17,7 @@ urlpatterns = patterns('',
     (r'', include('website.urls')),
 )
 
-handler500 = 'website.views.internal_error_view'
+handler500 = InternalErrorView.as_view()
 handler404 = 'website.views.portafolio_redirect_view'
 
 #if settings.DEBUG:
