@@ -9,9 +9,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     #ADMINISTRACION
-    url(r'^admin/filebrowser/', include(site.urls)),
-    (r'^grappelli/', include('grappelli.urls')),
-    (r'^admin/', include(admin.site.urls)),
+    #url(r'^admin/filebrowser/', include(site.urls)),
+    #(r'^grappelli/', include('grappelli.urls')),
+    #(r'^admin/', include(admin.site.urls)),
     #PUBLICO
     (r'', include('album.urls')),
     (r'', include('website.urls')),
@@ -20,11 +20,11 @@ urlpatterns = patterns('',
 handler500 = InternalErrorView.as_view()
 handler404 = 'website.views.portafolio_redirect_view'
 
-#if settings.DEBUG:
-from django.views.static import serve
-urlpatterns += patterns('',
-    url(r'^media/(?P<path>.*)$',
-        serve, {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    url(r'^static/(?P<path>.*)$',
-        serve, {'document_root': settings.STATIC_ROOT}),    
-)
+if settings.DEBUG:
+    from django.views.static import serve
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$',
+            serve, {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+        url(r'^static/(?P<path>.*)$',
+            serve, {'document_root': settings.STATIC_ROOT}),    
+    )
