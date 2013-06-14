@@ -39,7 +39,10 @@ class Album(models.Model):
         try:
             photo = self.photo_set.filter(is_cover=True)[0]
         except:
-            photo = self.photo_set.all()[0]
+            try:
+                photo = self.photo_set.all()[0]
+            except:
+                pass
         return photo
 
 
