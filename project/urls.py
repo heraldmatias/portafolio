@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     (r'', include('website.urls')),
 )
 
-handler500 = InternalErrorView.as_view()
+handler500 = 'website.views.internal_error_view'
 handler404 = 'website.views.portafolio_redirect_view'
 
 if settings.DEBUG:

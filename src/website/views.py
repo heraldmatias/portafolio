@@ -4,6 +4,8 @@ from django.views.generic import TemplateView, ListView, CreateView
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from album.models import Album
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 from .models import Pagina, Contact
 from .forms import ContactForm
@@ -63,8 +65,11 @@ class PresentView(TemplateView):
     template_name = "actualidad.html"
 
 
-class InternalErrorView(TemplateView):
-    template_name = "500.html"
+#class InternalErrorView(TemplateView):
+#    template_name = "500.html"
+def internal_error_view(request, template_name='500.html'):
+    return render_to_response(template_name, {},
+        context_instance=RequestContext(request)) 
 
-def portafolio_redirect_view(request, template_name='404.html'):    
+def portafolio_redirect_view(request, template_name='404.html'):
     return HttpResponseRedirect('/')
