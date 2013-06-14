@@ -3,7 +3,7 @@ from django.conf.urls.defaults import patterns, include, url
 from django.conf import settings
 from filebrowser.sites import site
 from django.contrib import admin
-from website.views import InternalErrorView
+#from website.views import InternalErrorView
 
 admin.autodiscover()
 
