@@ -3,16 +3,15 @@
           <div class="5grid-layout">
             <div class="row">
             <div class="9u">
-                <div id="largephoto">
                 {% with album=object_list.0 %}
+                <a id="slug_url" href="{% url portafolio_album album.slug %}" title="{{ album.name }}">
+                <div id="largephoto">
                 <div id="loader"></div>
                 <div id="largecaption">
-                  <div class="captionShine">ffdsf</div>
-                  <div class="captionContent">fdsfds</div>
+                  <div class="captionShine"></div>
+                  <div class="captionContent"></div>
                 </div>
-                <a id="slug_url" href="{% url portafolio_album album.slug %}"></a>
-                {% endwith %}
-                </div>
+                </div> </a>{% endwith %}
             </div>
             <div class="3u">
                 <div class="thumbnails">
