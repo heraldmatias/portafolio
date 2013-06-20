@@ -48,4 +48,6 @@ class Contact(models.Model):
 
     def save(self, *args, **kwargs):
         super(Contact, self).save(*args,**kwargs)
-        send_mail(self.subject, self.message, self.email, ['heraldmatias.oz@gmail.com'], fail_silently=False)
+        send_mail(self.subject,
+            u'%s \n Mi correo es: %s' % (self.message,self.email),'',
+            ['heraldmatias.oz@gmail.com',], fail_silently=False)
