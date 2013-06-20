@@ -50,4 +50,4 @@ class Contact(models.Model):
         super(Contact, self).save(*args,**kwargs)
         send_mail(self.subject,
             u'%s \n Mi correo es: %s' % (self.message,self.email),'',
-            ['heraldmatias.oz@gmail.com',], fail_silently=False)
+            ['lara.flores.jesus@gmail.com',], fail_silently=False)
