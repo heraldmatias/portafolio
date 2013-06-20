@@ -34,3 +34,4 @@ class ContactAdmin(admin.ModelAdmin):
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, PortafolioFlatPageAdmin)
 admin.site.register(Pagina,PaginaAdmin)
+admin.site.register(Contact, ContactAdmin)
