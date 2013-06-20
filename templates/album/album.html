@@ -60,10 +60,7 @@
                     <header>
                       <h2>{{ object.name }}</h2>
                       <!--h3>A generic one column layout</h3-->
-                    </header>
-                    <p>
-                    {{ object.description }}
-                    </p>
+                    </header>                    
                     <div id="gallery-box">
                       <ul id="gallery">
                         {% for photo in object.photo_set.all %}
@@ -74,7 +71,10 @@
                         </li>
                         {% endfor %}
                       </ul>
-                    </div>
+                    </div><br>
+                    <p>
+                    {{ object.description }}
+                    </p>
                     <b>Tags: </b>
                     {% for tag in object.slice_tags %}
                     <a href="{% url portafolio_albumes-tags tag.1 %}">{{ tag.0 }}</a>{% if not forloop.last %}<b style="padding-right:10px;">,<b>{% endif %}
