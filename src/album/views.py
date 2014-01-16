@@ -22,6 +22,8 @@ class AlbumListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(AlbumListView, self).get_context_data(**kwargs)
+        context['tags'] = self.kwargs.get('tags', False)
+        context['category'] = self.kwargs.get('category', False)
         context.update(get_initial_data())
         return context
 

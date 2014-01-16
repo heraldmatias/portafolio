@@ -23,6 +23,27 @@
                 {% if is_paginated %}
         <div class="pagination">
             <span class="page-links">
+            {% if category %}
+                {% if page_obj.has_previous %}
+                    <a href="{% url portafolio_categories_page category page_obj.previous_page_number %}">Anterior</a>
+                {% endif %}
+                <span class="page-current">
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url portafolio_categories_page category page_obj.next_page_number %}">Siguiente</a>
+                {% endif %}
+            {% elif tags %}
+                {% if page_obj.has_previous %}
+                    <a href="{% url portafolio_albumes-tags-page tags page_obj.previous_page_number %}">Anterior</a>
+                {% endif %}
+                <span class="page-current">
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url portafolio_albumes-tags-page tags page_obj.next_page_number %}">Siguiente</a>
+                {% endif %}
+            {% else %}
                 {% if page_obj.has_previous %}
                     <a href="{% url portafolio_albumes_page page_obj.previous_page_number %}">Anterior</a>
                 {% endif %}
@@ -32,6 +53,7 @@
                 {% if page_obj.has_next %}
                     <a href="{% url portafolio_albumes_page page_obj.next_page_number %}">Siguiente</a>
                 {% endif %}
+            {% endif %}
             </span>
         </div>
     {% endif %}
