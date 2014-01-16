@@ -9,9 +9,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     #ADMINISTRACION
-    #url(r'^admin/filebrowser/', include(site.urls)),
-    #(r'^grappelli/', include('grappelli.urls')),
-    #(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/filebrowser/', include(site.urls)),
+    (r'^grappelli/', include('grappelli.urls')),
+    (r'^admin/', include(admin.site.urls)),
     #PUBLICO
     (r'', include('album.urls')),
     (r'', include('website.urls')),

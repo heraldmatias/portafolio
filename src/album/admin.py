@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
+from album.models import Category
 
 from django.contrib import admin
-from django.db import models
-from django import forms
 
 from .models import Album, Photo
 
@@ -15,10 +14,17 @@ class PhotoInline(admin.TabularInline):
 
 class AlbumAdmin(admin.ModelAdmin):
     list_display = ('name', 'created', 'order', )
-    exclude = ['slug','slug_tags']
+    exclude = ['slug', 'slug_tags']
     list_editable = ['order', ]
     inlines = [
         PhotoInline,
     ]
 
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'order')
+    exclude = ['slug']
+    list_editable = ['name', 'order']
+
 admin.site.register(Album, AlbumAdmin)
+admin.site.register(Category, CategoryAdmin)

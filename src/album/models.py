@@ -5,28 +5,57 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 
 
-class Album(models.Model):
+class Category(models.Model):
+    name = models.CharField(_(u'Nombre'), max_length=30)
+    slug = models.SlugField(null=True)
+    description = models.TextField(_(u'Descipción'), blank=True)
+    order = models.IntegerField(_(u'Orden'))
 
+    def __unicode__(self):
+        return u'%s' % self.name
+
+    def get_cover_photo(self):
+        photo = Photo.objects.filter(
+            is_cover=True, album__category_id=self.pk
+        )
+        try:
+            photo = photo[0]
+        except IndexError:
+            photo = None
+        return photo
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
+
+    class Meta:
+        ordering = ['order']
+        verbose_name = _(u'Categoría')
+        verbose_name_plural = _(u'Categorías')
+
+
+class Album(models.Model):
     name = models.CharField(_(u'Nombre'), max_length=250)
     slug = models.SlugField()
     description = models.TextField(_(u'Descipción'), blank=True)
     order = models.IntegerField(_(u'Orden'))
     tags = models.TextField(u'Palabras Claves (TAGS)', help_text=u'Ingrese las palabras claves separadas por comas.')
     slug_tags = models.TextField(u'Slugify tags', blank=True, null=True)
+    category = models.ForeignKey(Category, null=True)
     created = models.DateTimeField(auto_now=True, auto_now_add=True)
 
     class Meta:
         ordering = ['order']
         verbose_name = "Album"
-        verbose_name_plural = "Albums"
+        verbose_name_plural = _(u'Albumes')
 
     def __unicode__(self):
         return self.name
 
     def slice_tags(self):
         if self.tags:
-            return [ (t.strip(),slugify(t.strip())) 
-            for t in self.tags.split(',') if not t.strip() == '' ]
+            return [(t.strip(), slugify(t.strip()))
+                    for t in self.tags.split(',') if not t.strip() == '']
         return []
 
     def save(self, *args, **kwargs):
@@ -47,7 +76,6 @@ class Album(models.Model):
 
 
 class Photo(models.Model):
-
     album = models.ForeignKey(Album)
     title = models.CharField(_(u'Título'), max_length=250, blank=True)
     slug = models.SlugField()

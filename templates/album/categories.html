@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block css %}
+<style type="text/css">
+.pagination{
+  float: right;
+  position: relative;
+}
+</style>
+{% endblock %}
+{% block metadata %}
+  <meta name="description" content="portafolio de jesus lara, jesus lara, jesús lara, fotografía peruana," />
+  <meta name="keywords" content="portafolio, jesús lara, jesus lara, fotografía, fotografia, fotografia peruana, fotografo peruano," />
+{% endblock %}
+{% block content %}
+    {% include 'website/header.html' %}
+    <!-- Content -->
+      <div id="content-wrapper">
+        <div id="content">
+          <div class="5grid-layout">
+            <div class="row">
+              <div class="12u-first">
+                {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{% url portafolio_categories_page page_obj.previous_page_number %}">Anterior</a>
+                {% endif %}
+                <span class="page-current">
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url portafolio_categories_page page_obj.next_page_number %}">Siguiente</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+                {% for category in page_obj %}
+                <!-- Main Content -->
+                  <section>
+                    <header>
+                      <h2>{{ category.name|title }}</h2>
+                      <!--h3>Another generic two column layout</h3-->
+                    </header>
+                    <div>
+                      <img class="porta_imagen" src="{{ category.get_cover_photo.photo|thumbnail_url:'banner' }}" alt="{{ category.name }}"/>
+                      {{ category.description|safe }}
+                    </div>
+                    <div><p><a href="{% url portafolio_albumes_category category.slug %}">Ver Albumes</a></p></div>
+                  </section>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
