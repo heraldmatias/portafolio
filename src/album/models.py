@@ -9,20 +9,14 @@ class Category(models.Model):
     name = models.CharField(_(u'Nombre'), max_length=30)
     slug = models.SlugField(null=True)
     description = models.TextField(_(u'Descipción'), blank=True)
+    photo = models.ImageField(_(u'Foto'), upload_to='categoria/')
     order = models.IntegerField(_(u'Orden'))
 
     def __unicode__(self):
         return u'%s' % self.name
 
     def get_cover_photo(self):
-        photo = Photo.objects.filter(
-            is_cover=True, album__category_id=self.pk
-        )
-        try:
-            photo = photo[0]
-        except IndexError:
-            photo = None
-        return photo
+        return self.photo
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)

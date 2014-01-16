@@ -5,7 +5,7 @@
             <div class="9u">
                 {% with category=object_list.0 %}
                     <a id="slug_url" href="{% url portafolio_albumes_category category.slug %}" title="{{ category.name }}">
-                        <img src="{{ category.get_cover_photo.photo|thumbnail_url:'photo'  }}">
+                        <img src="{{ category.photo|thumbnail_url:'photo'  }}">
                     </a>{% endwith %}
             </div>
         </div>

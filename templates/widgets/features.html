@@ -1,26 +1,30 @@
-    {% load thumbnail %}
-    <!-- Features -->
-      <div id="features-wrapper">
-        <div id="features">
-          <div class="5grid-layout">
+{% load thumbnail %}
+<!-- Features -->
+<div id="features-wrapper">
+    <div id="features">
+        <div class="5grid-layout">
             <div class="row">
-            {% for album in object_list %}
-            {% if forloop.counter <= 4 %}
-              <div class="3u">
-                <!-- Feature #1 -->
-                  <section>
-                    <a href="{% url portafolio_albumes_category album.slug %}" class="bordered-feature-image">
-                    <img src="{{ album.get_cover_photo.photo|thumbnail_url:'cover' }}" alt="{{ album.name }}" />
-                    </a>
-                    <h2>{{ album.name }}</h2>
-                    <p>
-                      {{ album.description|truncatewords:30 }}
-                    </p>
-                  </section>
-              </div>
-            {% endif %}
-            {% endfor %}
+                {% for album in object_list %}
+                    {% if forloop.counter <= 4 %}
+                        <div class="3u">
+                            <!-- Feature #1 -->
+                            <section>
+                                <a href="{% url portafolio_albumes_category album.slug %}"
+                                   class="bordered-feature-image">
+                                    <img src="{{ album.photo|thumbnail_url:'cover' }}"
+                                         alt="{{ album.name }}"/>
+                                </a>
+
+                                <h2>{{ album.name }}</h2>
+
+                                <p>
+                                    {{ album.description|truncatewords:30 }}
+                                </p>
+                            </section>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
