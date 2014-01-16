@@ -43,7 +43,7 @@
                       <!--h3>Another generic two column layout</h3-->
                     </header>
                     <div>
-                      <img class="porta_imagen" src="{{ category.get_cover_photo.photo|thumbnail_url:'banner' }}" alt="{{ category.name }}"/>
+                      <img class="porta_imagen" src="{{ category.photo|thumbnail_url:'banner' }}" alt="{{ category.name }}"/>
                       {{ category.description|safe }}
                     </div>
                     <div><p><a href="{% url portafolio_albumes_category category.slug %}">Ver Albumes</a></p></div>
