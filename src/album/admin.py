@@ -22,9 +22,9 @@ class AlbumAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'order', 'photo')
+    list_display = ('id', 'name', 'order', 'photo', 'description')
     exclude = ['slug']
-    list_editable = ['name', 'order', 'photo']
+    list_editable = ['name', 'order', 'photo', 'description']
 
 admin.site.register(Album, AlbumAdmin)
 admin.site.register(Category, CategoryAdmin)
