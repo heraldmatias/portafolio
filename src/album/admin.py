@@ -13,9 +13,9 @@ class PhotoInline(admin.TabularInline):
 
 
 class AlbumAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created', 'order', )
+    list_display = ('name', 'created', 'order', 'category')
     exclude = ['slug', 'slug_tags']
-    list_editable = ['order', ]
+    list_editable = ['order', 'category']
     inlines = [
         PhotoInline,
     ]
