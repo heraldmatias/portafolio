@@ -33,15 +33,15 @@
                 {% if page_obj.has_next %}
                     <a href="{% url portafolio_albumes_category_page category page_obj.next_page_number %}">Siguiente</a>
                 {% endif %}
-            {% elif tags %}
+            {% elif taggs %}
                 {% if page_obj.has_previous %}
-                    <a href="{% url portafolio_albumes-tags-page tags page_obj.previous_page_number %}">Anterior</a>
+                    <a href="{% url portafolio_albumes-tags-page taggs page_obj.previous_page_number %}">Anterior</a>
                 {% endif %}
                 <span class="page-current">
                     Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
                 </span>
                 {% if page_obj.has_next %}
-                    <a href="{% url portafolio_albumes-tags-page tags page_obj.next_page_number %}">Siguiente</a>
+                    <a href="{% url portafolio_albumes-tags-page taggs page_obj.next_page_number %}">Siguiente</a>
                 {% endif %}
             {% else %}
                 {% if page_obj.has_previous %}
